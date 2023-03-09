@@ -1,6 +1,6 @@
 const socket = io();
 
-socket.emit("message", "Mensaje desde frontend");
+socket.emit("message", "Preparando la carga de productos...");
 
 socket.on("message", (data) => {
   console.log(data);

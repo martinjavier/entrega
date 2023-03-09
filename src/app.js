@@ -6,15 +6,13 @@ import cartsRouter from "./routes/carts.router.js";
 import viewsRouter from "./routes/views.router.js";
 import { Server } from "socket.io";
 
-let products = [];
-
 const app = express();
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
 app.use(express.static(__dirname + "/../public"));
-app.use("/real-time-products", viewsRouter);
+app.use("/", viewsRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 
@@ -28,7 +26,7 @@ socketServer.on("connection", (socket) => {
   console.log("New client connected!");
 
   socket.on("message", (data) => {
-    socket.emit("input-changed", JSON.stringify(messages));
+    socket.emit("input-changed", JSON.stringify(data));
   });
 
   socket.on("input-changed", (data) => {
