@@ -5,15 +5,11 @@ const router = Router();
 
 let products = [];
 
-router.get("/real-time-products", (req, res) => {
-  let prodManager = new ProductManager();
-  let products = prodManager.getProducts();
-  let product = products[0];
-
-  res.render("real_time_products", {
-    ...product,
-    style: "real_time_products",
-  });
+router.get("/real-time-products", async (req, res) => {
+  let prodManager = new ProductManager("./src/Products.json");
+  let products = await prodManager.getProducts();
+  console.log(products);
+  res.render("real_time_products", { products: products });
 });
 
 export default router;

@@ -4,15 +4,32 @@
   </div>
   <div id="productList"></div>
   <div>
-    <p>ID {{id}}</p>
-    <p>Title {{product.title}}</p>
-    <p>Description {{product.description}}</p>
-    <p>Code {{product.code}}</p>
-    <p>Price {{product.price}}</p>
-    <p>Status {{product.status}}</p>
-    <p>Stock {{product.stock}}</p>
-    <p>Category {{product.category}}</p>
-    <p>Thumbnails {{product.thumbnails}}</p>
+    <table width="50%">
+      <tr>
+        <td>id</td>
+        <td>title</td>
+        <td>description</td>
+        <td>code</td>
+        <td>price</td>
+        <td>status</td>
+        <td>stock</td>
+        <td>category</td>
+        <td>thumbnails</td>
+      </tr>
+      {{#each products}}
+        <tr>
+          <td headers="id">{{id}}</td>
+          <td headers="title">{{title}}</td>
+          <td headers="description">{{description}}</td>
+          <td headers="code">{{code}}</td>
+          <td headers="price">{{price}}</td>
+          <td headers="status">{{status}}</td>
+          <td headers="stock">{{stock}}</td>
+          <td headers="category">{{category}}</td>
+          <td headers="thumbnails">{{thumbnails}}</td>
+        </tr>
+      {{/each}}
+    </table>
   </div>
 </div>
 
